@@ -31,12 +31,21 @@ router.post("/", async (req, res) => {
     res.json(newNote);
     } catch (err) {
         res.status(400).json(err);
-    };
+    }
 });
 
 router.delete("/notes/:id", async (req, res) => {
     try {
         await noteController.delete(req.params.id);
+        res.status(204).send();
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+router.delete("/notes", async (req, res) => {
+    try {
+        await noteController.deleteAll();
         res.status(204).send();
     } catch (err) {
         res.status(400).send(err);

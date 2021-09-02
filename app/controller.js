@@ -17,4 +17,7 @@ export default {
     delete(id) {
         return notesConnection.deleteOne({_id: ObjectId(id)});
     },
+    deleteAll() {
+        return notesConnection.deleteMany({});
+    },
 };
