@@ -36,8 +36,8 @@ router.post("/", async (req, res) => {
 
 router.delete("/notes/:id", async (req, res) => {
     try {
-        await noteController.delete(req.params.id);
-        res.status(204).send();
+        const deletion = await noteController.delete(req.params.id);
+        res.status(204).send(deletion);
     } catch (err) {
         res.status(400).send(err);
     }
@@ -45,8 +45,8 @@ router.delete("/notes/:id", async (req, res) => {
 
 router.delete("/notes", async (req, res) => {
     try {
-        await noteController.deleteAll();
-        res.status(204).send();
+       const deletion = await noteController.deleteAll();
+        res.status(204).send(deletion);
     } catch (err) {
         res.status(400).send(err);
     }
