@@ -6,7 +6,7 @@ const notesConnection = client.db("noteTaker").collection("notes");
 
 export default {
     index() {
-        return notesConnection.find({}).toArray();
+        return notesConnection.find().toArray();
     },
     create(newNote) {
     return notesConnection.insertOne(newNote);
@@ -24,6 +24,6 @@ export default {
         return notesConnection.deleteOne({_id: ObjectId(id)});
     },
     deleteAll() {
-        return notesConnection.deleteMany({});
+        return notesConnection.deleteMany();
     },
 };
