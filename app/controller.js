@@ -11,6 +11,12 @@ export default {
     create(newNote) {
     return notesConnection.insertOne(newNote);
     },
+    update(id, updatedNote) {
+        return notesConnection.updateOne(
+            {_id: ObjectId(id)},
+            {$set: updatedNote}
+            );
+        },
     show(id) {
         return notesConnection.findOne(ObjectId(id));
     },
